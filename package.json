@@ -1,0 +1,59 @@
+{
+  "name": "dsh-audio-tools",
+  "version": "0.1.0",
+  "description": "DSH audio tools: probe, convert/extract audio tracks, and transcribe speech with your own ffmpeg + whisper.cpp or any OpenAI-compatible transcription API.",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "skills",
+    "scripts",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test test/",
+    "setup:whisper": "node scripts/setup-whisper.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "minVersion": "0.2.0"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "audio",
+    "ffmpeg",
+    "ffprobe",
+    "whisper",
+    "transcribe",
+    "speech-to-text",
+    "subtitle",
+    "srt"
+  ],
+  "engines": {
+    "node": ">=20",
+    "dsh": ">=0.2.0"
+  },
+  "license": "MIT",
+  "author": "dsh-audio-tools contributors",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ren-xing/dsh-audio-tools.git"
+  },
+  "homepage": "https://github.com/Ren-xing/dsh-audio-tools#readme",
+  "bugs": {
+    "url": "https://github.com/Ren-xing/dsh-audio-tools/issues"
+  }
+}

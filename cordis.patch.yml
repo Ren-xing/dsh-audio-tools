@@ -1,0 +1,30 @@
+# dsh bundle patch: inserts this plugin's loader entry into a profile layer.
+# Bundle patches add rows via `insert` blocks; top-level rows would be treated
+# as id-targeted overrides of EXISTING entries ("entry not found" otherwise).
+#
+# This plugin registers three model-facing tools:
+#   audio_probe      — read container/codec/duration/bitrate/tags with ffprobe
+#   audio_convert    — transcode, extract the audio track of a video, trim,
+#                      resample, downmix, normalize loudness
+#   audio_transcribe — speech-to-text via local whisper.cpp or an
+#                      OpenAI-compatible /audio/transcriptions endpoint
+#
+# Every config key is optional and validated by the plugin (a wrong type or an
+# unknown key is a warning, never a startup failure):
+#   ffmpegPath:    'C:\ffmpeg\bin\ffmpeg.exe'   # default: resolve from PATH
+#   ffprobePath:   'C:\ffmpeg\bin\ffprobe.exe'  # default: resolve from PATH
+#   whisperPath:   'C:\...\whisper-cli.exe'     # default: <plugin>/vendor/whisper
+#   modelDir:      'C:\Users\me\.dsh\audio-models'  # default: ~/.dsh/audio-models
+#   defaultModel:  'small'                       # tiny|base|small|medium|large-v3
+#   language:      'zh'                          # default transcription language
+#   backend:       'cli'                         # cli|api
+#   apiBaseUrl:    'https://api.example.com/v1'  # backend: api
+#   apiKey:        'sk-...'                      # backend: api
+#   apiModel:      'whisper-1'                   # backend: api
+#   outputDir:     null                          # default: next to the input
+#   timeoutMs:     600000
+#   threads:       0                             # 0 = auto (whisper.cpp only)
+
+- insert:
+    - id: dsh-audio
+      name: 'dsh-audio-tools'

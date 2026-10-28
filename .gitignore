@@ -1,0 +1,24 @@
+# Dependencies (the plugin itself has none; this is for local testing / tooling)
+node_modules/
+
+# Build output
+*.tgz
+dist/
+
+# Local scratch
+.tmp/
+.tmp-*/
+tmp/
+
+# Downloaded engines/models used only for manual testing
+vendor/
+models/
+tools/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+npm-debug.log*
+pnpm-debug.log*
