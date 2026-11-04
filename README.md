@@ -1,7 +1,11 @@
 # dsh-audio-tools
 
+[English](README.en.md) | 中文
+
 <!-- repo-link -->
 > 源码与问题反馈：https://github.com/Ren-xing/dsh-audio-tools
+
+![dsh-audio-tools](assets/screenshot-1-hero.png)
 
 DeepSeek Harness 音频插件：用本机 ffmpeg 查看音频/视频信息、转换格式、从视频里抽音轨，用 whisper.cpp 或任意 OpenAI 兼容接口把语音转成文字和字幕。
 
@@ -14,6 +18,10 @@ DeepSeek Harness 音频插件：用本机 ffmpeg 查看音频/视频信息、转
 | `audio_transcribe` | 语音转文字，返回全文 + 带时间轴分段，可写 `.txt` / `.srt` |
 
 同时注册一个同名 skill（`skills/dsh-audio/SKILL.md`），告诉模型什么时候该用哪个工具。
+
+![audio_probe 与 audio_convert](assets/screenshot-2-convert.png)
+
+![audio_transcribe](assets/screenshot-3-transcribe.png)
 
 ---
 
