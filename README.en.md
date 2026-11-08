@@ -70,7 +70,7 @@ The desktop `desktop` profile must be managed by the app's own CLI, not a standa
 Or install a local tarball:
 
 ```powershell
-& "<DeepSeek Harness>\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add "C:\path\to\dsh-audio-tools-0.1.1.tgz"
+& "<DeepSeek Harness>\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add "C:\path\to\dsh-audio-tools-0.1.2.tgz"
 ```
 
 One command does three things: adds the package to the profile's `dependencies` (it runs `pnpm add`), registers it in `dsh.profile.bundles` because it declares `dsh.bundle`, and validates that its `cordis.patch.yml` parses.
@@ -80,7 +80,7 @@ Then **quit DeepSeek Harness completely** (including the tray icon) and start it
 ### Option B: copy manually
 
 1. Copy the `dsh-audio-tools` folder into `%USERPROFILE%\.dsh\profiles\desktop\node_modules\dsh-audio-tools`
-2. In `%USERPROFILE%\.dsh\profiles\desktop\package.json`, add `"dsh-audio-tools": "0.1.1"` to `dependencies` and `"dsh-audio-tools"` to `dsh.profile.bundles`
+2. In `%USERPROFILE%\.dsh\profiles\desktop\package.json`, add `"dsh-audio-tools": "0.1.2"` to `dependencies` and `"dsh-audio-tools"` to `dsh.profile.bundles`
 3. Restart
 
 ### A note on `cordis.yml`

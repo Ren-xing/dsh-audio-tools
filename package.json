@@ -1,6 +1,6 @@
 {
   "name": "dsh-audio-tools",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "DSH audio tools: probe, convert/extract audio tracks, and transcribe speech with your own ffmpeg + whisper.cpp or any OpenAI-compatible transcription API.",
   "type": "module",
   "main": "lib/index.js",
@@ -17,7 +17,8 @@
     "LICENSE",
     "assets",
     "screenshots.json",
-    "README.en.md"
+    "README.en.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "test": "node --test test/",

@@ -58,7 +58,7 @@ ffprobe -version
 
 ## 2. 安装插件
 
-### 方式 A：命令行安装（推荐）
+### 方式 A：从 npm 安装（推荐）
 
 用**应用自带的 CLI**（`desktop` profile 只能由桌面端 CLI 管理，普通 `dsh` 不行）：
 
@@ -66,19 +66,27 @@ ffprobe -version
 $dsh = "C:\Users\<你>\Desktop\杂七杂八\deepseek\resources\runtime\cli\bin\dsh.cmd"
 # 或默认安装位置： "$env:LOCALAPPDATA\Programs\DeepSeek Harness\resources\runtime\cli\bin\dsh.cmd"
 
-& $dsh plugin --profile desktop add "C:\path\to\dsh-audio-tools-0.1.0.tgz"
+& $dsh plugin --profile desktop add dsh-audio-tools
+```
+
+> 版本跟随 npm 上的 `latest`，想锁版本可以写 `dsh-audio-tools@0.1.2`。
+
+### 方式 B：从本地 tgz 安装
+
+```powershell
+& $dsh plugin --profile desktop add "C:\path\to\dsh-audio-tools-0.1.2.tgz"
 ```
 
 一条命令做三件事：把包装进 profile 的 `dependencies`（内部是 `pnpm add`）、因为它声明了 `dsh.bundle` 而自动写进 `dsh.profile.bundles`、并校验它的 `cordis.patch.yml` 能被解析。
 
 然后**完全退出 DeepSeek Harness（托盘图标也要退）再启动**。启动时它的 `cordis.patch.yml` 会把 `dsh-audio` 条目插进运行配置。
 
-> 也可以从插件市场/插件管理界面安装本地 tgz，效果一样。
+> 也可以从插件市场/插件管理界面安装，效果一样。
 
-### 方式 B：手动复制（不装依赖）
+### 方式 C：手动复制（不装依赖）
 
 1. 把整个 `dsh-audio-tools` 文件夹复制到 `%USERPROFILE%\.dsh\profiles\desktop\node_modules\dsh-audio-tools`
-2. 编辑 `%USERPROFILE%\.dsh\profiles\desktop\package.json`：`dependencies` 里加 `"dsh-audio-tools": "0.1.0"`，`dsh.profile.bundles` 里加 `"dsh-audio-tools"`
+2. 编辑 `%USERPROFILE%\.dsh\profiles\desktop\package.json`：`dependencies` 里加 `"dsh-audio-tools": "0.1.2"`，`dsh.profile.bundles` 里加 `"dsh-audio-tools"`
 3. 重启
 
 ### 关于 `cordis.yml`
