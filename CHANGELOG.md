@@ -3,6 +3,16 @@
 All notable changes to `dsh-audio-tools`. Version numbers follow semver;
 the plugin id (`dsh-audio`) is stable across all releases.
 
+## 0.1.3 — 2026-11-10
+
+Documentation fix only; no runtime code changes.
+
+- Fix broken screenshots on the npm package page: the README used relative paths
+  (`assets/screenshot-1-hero.png`), which npm resolves against `www.npmjs.com` and therefore 404s.
+  Links are now absolute and served by unpkg, so they render on both npm and GitHub.
+  修 npm 页面上 README 截图裂图的问题：原来用相对路径，npm 会解析成 npmjs.com 上的地址而 404；
+  现在改成 unpkg 绝对地址，npm 和 GitHub 上都能显示。
+
 ## 0.1.2 — 2026-11-09
 
 Documentation and packaging only; no runtime code changes.

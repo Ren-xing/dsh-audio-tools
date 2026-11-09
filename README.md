@@ -5,7 +5,7 @@
 <!-- repo-link -->
 > 源码与问题反馈：https://github.com/Ren-xing/dsh-audio-tools
 
-![dsh-audio-tools](assets/screenshot-1-hero.png)
+![dsh-audio-tools](https://unpkg.com/dsh-audio-tools/assets/screenshot-1-hero.png)
 
 DeepSeek Harness 音频插件：用本机 ffmpeg 查看音频/视频信息、转换格式、从视频里抽音轨，用 whisper.cpp 或任意 OpenAI 兼容接口把语音转成文字和字幕。
 
@@ -19,9 +19,9 @@ DeepSeek Harness 音频插件：用本机 ffmpeg 查看音频/视频信息、转
 
 同时注册一个同名 skill（`skills/dsh-audio/SKILL.md`），告诉模型什么时候该用哪个工具。
 
-![audio_probe 与 audio_convert](assets/screenshot-2-convert.png)
+![audio_probe 与 audio_convert](https://unpkg.com/dsh-audio-tools/assets/screenshot-2-convert.png)
 
-![audio_transcribe](assets/screenshot-3-transcribe.png)
+![audio_transcribe](https://unpkg.com/dsh-audio-tools/assets/screenshot-3-transcribe.png)
 
 ---
 
@@ -69,12 +69,12 @@ $dsh = "C:\Users\<你>\Desktop\杂七杂八\deepseek\resources\runtime\cli\bin\d
 & $dsh plugin --profile desktop add dsh-audio-tools
 ```
 
-> 版本跟随 npm 上的 `latest`，想锁版本可以写 `dsh-audio-tools@0.1.2`。
+> 版本跟随 npm 上的 `latest`，想锁版本可以写 `dsh-audio-tools@0.1.3`。
 
 ### 方式 B：从本地 tgz 安装
 
 ```powershell
-& $dsh plugin --profile desktop add "C:\path\to\dsh-audio-tools-0.1.2.tgz"
+& $dsh plugin --profile desktop add "C:\path\to\dsh-audio-tools-0.1.3.tgz"
 ```
 
 一条命令做三件事：把包装进 profile 的 `dependencies`（内部是 `pnpm add`）、因为它声明了 `dsh.bundle` 而自动写进 `dsh.profile.bundles`、并校验它的 `cordis.patch.yml` 能被解析。
@@ -86,7 +86,7 @@ $dsh = "C:\Users\<你>\Desktop\杂七杂八\deepseek\resources\runtime\cli\bin\d
 ### 方式 C：手动复制（不装依赖）
 
 1. 把整个 `dsh-audio-tools` 文件夹复制到 `%USERPROFILE%\.dsh\profiles\desktop\node_modules\dsh-audio-tools`
-2. 编辑 `%USERPROFILE%\.dsh\profiles\desktop\package.json`：`dependencies` 里加 `"dsh-audio-tools": "0.1.2"`，`dsh.profile.bundles` 里加 `"dsh-audio-tools"`
+2. 编辑 `%USERPROFILE%\.dsh\profiles\desktop\package.json`：`dependencies` 里加 `"dsh-audio-tools": "0.1.3"`，`dsh.profile.bundles` 里加 `"dsh-audio-tools"`
 3. 重启
 
 ### 关于 `cordis.yml`

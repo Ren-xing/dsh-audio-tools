@@ -4,7 +4,7 @@ English | [中文](README.md)
 
 > Source & issues: <https://github.com/Ren-xing/dsh-audio-tools>
 
-![dsh-audio-tools](assets/screenshot-1-hero.png)
+![dsh-audio-tools](https://unpkg.com/dsh-audio-tools/assets/screenshot-1-hero.png)
 
 Audio tooling for DeepSeek Harness: inspect audio/video files, transcode or extract a video's audio track, and turn speech into text and subtitles — with **your own ffmpeg**, plus local whisper.cpp or any OpenAI-compatible transcription API.
 
@@ -20,9 +20,9 @@ It also ships a skill (`skills/dsh-audio/SKILL.md`) that tells the model which t
 
 ## Screenshots
 
-![audio_probe and audio_convert](assets/screenshot-2-convert.png)
+![audio_probe and audio_convert](https://unpkg.com/dsh-audio-tools/assets/screenshot-2-convert.png)
 
-![audio_transcribe](assets/screenshot-3-transcribe.png)
+![audio_transcribe](https://unpkg.com/dsh-audio-tools/assets/screenshot-3-transcribe.png)
 
 ---
 
@@ -70,7 +70,7 @@ The desktop `desktop` profile must be managed by the app's own CLI, not a standa
 Or install a local tarball:
 
 ```powershell
-& "<DeepSeek Harness>\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add "C:\path\to\dsh-audio-tools-0.1.2.tgz"
+& "<DeepSeek Harness>\resources\runtime\cli\bin\dsh.cmd" plugin --profile desktop add "C:\path\to\dsh-audio-tools-0.1.3.tgz"
 ```
 
 One command does three things: adds the package to the profile's `dependencies` (it runs `pnpm add`), registers it in `dsh.profile.bundles` because it declares `dsh.bundle`, and validates that its `cordis.patch.yml` parses.
@@ -80,7 +80,7 @@ Then **quit DeepSeek Harness completely** (including the tray icon) and start it
 ### Option B: copy manually
 
 1. Copy the `dsh-audio-tools` folder into `%USERPROFILE%\.dsh\profiles\desktop\node_modules\dsh-audio-tools`
-2. In `%USERPROFILE%\.dsh\profiles\desktop\package.json`, add `"dsh-audio-tools": "0.1.2"` to `dependencies` and `"dsh-audio-tools"` to `dsh.profile.bundles`
+2. In `%USERPROFILE%\.dsh\profiles\desktop\package.json`, add `"dsh-audio-tools": "0.1.3"` to `dependencies` and `"dsh-audio-tools"` to `dsh.profile.bundles`
 3. Restart
 
 ### A note on `cordis.yml`
