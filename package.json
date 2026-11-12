@@ -21,7 +21,7 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "test": "node --test test/",
+    "test": "node --test",
     "setup:whisper": "node scripts/setup-whisper.mjs"
   },
   "dsh": {
