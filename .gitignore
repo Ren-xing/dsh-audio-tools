@@ -11,9 +11,10 @@ dist/
 tmp/
 
 # Downloaded engines/models used only for manual testing
+# NOTE: keep these anchored with a leading slash, otherwise lib/tools/ matches too.
 vendor/
 models/
-tools/
+/tools/
 
 # OS / editor noise
 .DS_Store
