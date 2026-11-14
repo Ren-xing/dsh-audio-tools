@@ -138,6 +138,7 @@ DSH 的运行条目**不是**从 `cordis.yml` 读的，而是 `dsh.profile.bundl
 | `apiKey` | `''` | 走 `Authorization: Bearer` |
 | `apiModel` | `whisper-1` | API 后端的模型名 |
 | `outputDir` | `null` | 转换输出的默认目录；不填则输出在输入旁边 |
+| `tempDir` | `null` | 转写用的临时目录。**必须是纯 ASCII 路径且进程可写**（whisper.cpp 遇到中文路径会崩 0xC0000409）；不填则依次试 `%TEMP%`、`%LOCALAPPDATA%\Temp`、`%PUBLIC%\dsh-audio-tmp`，每个候选都会先试写一次再采用。沙箱环境里工作区路径常含中文，这时可以指向一个通向工作区内部的纯 ASCII 目录联接（junction） |
 | `timeoutMs` | `600000` | 单次 ffmpeg/whisper 调用超时 |
 | `threads` | `0` | whisper 线程数，0 = 自动 |
 

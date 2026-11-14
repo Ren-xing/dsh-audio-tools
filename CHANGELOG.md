@@ -3,6 +3,22 @@
 All notable changes to `dsh-audio-tools`. Version numbers follow semver;
 the plugin id (`dsh-audio`) is stable across all releases.
 
+## 0.1.4 — 2026-11-15
+
+- New `config.tempDir`: the scratch folder whisper.cpp uses. It must be an ASCII path the
+  process can write to; inside a DSH sandbox `%TEMP%` may be denied while the workspace path
+  contains non-ASCII characters, so this has to be configurable.
+  新增 `config.tempDir`：whisper.cpp 用的临时目录。必须是进程可写的 ASCII 路径；
+  在 DSH 沙箱里 `%TEMP%` 可能被拒、而工作区路径又含中文，所以必须可配置。
+- Every auto-detected candidate is now probed with a real write before use — a successful
+  directory creation does not mean files can be written inside it (this was the failure:
+  `Error opening output ..\Temp\dsh-audio-XXXX\input.wav: Permission denied`).
+  自动候选目录现在都会先真写一个探针文件再采用 —— 建目录成功不代表能往里写文件
+  （实际报错就是这个：`Error opening output ..\Temp\dsh-audio-XXXX\input.wav: Permission denied`）。
+- A configured `tempDir` that is non-ASCII or unwritable now fails with an explicit message
+  instead of being skipped silently.
+  配置了非 ASCII 或不可写的 `tempDir` 会直接报错说明原因，而不是静默跳过。
+
 ## 0.1.3 — 2026-11-10
 
 Documentation fix only; no runtime code changes.

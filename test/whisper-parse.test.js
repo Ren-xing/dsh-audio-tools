@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { join } from 'node:path'
+import { dirname, join } from 'node:path'
 import test from 'node:test'
 import { joinSegmentText, parseWhisperJson, toSrt } from '../lib/transcribe/whisper-cli.js'
 
@@ -98,8 +98,45 @@ test('createWorkDir returns an ASCII directory or explains why it cannot', async
     assert.equal(isAsciiPath(dir), true, `unexpected non-ASCII work dir: ${dir}`)
     rmSync(dir, { recursive: true, force: true })
   } catch (error) {
-    assert.match(error.message, /non-ASCII|ASCII temp/)
+    assert.match(error.message, /non-ASCII|ASCII/)
   }
+})
+
+const ASCII_TMP = /^[\x20-\x7E]*$/.test(tmpdir()) ? tmpdir() : null
+
+// A writable ASCII temp dir is the precondition for this test; some hosts can
+// create folders in %TEMP% but deny file writes inside them (that is the very
+// failure mode createWorkDir() now detects), so verify before relying on it.
+let WRITABLE_ASCII_TMP = null
+if (ASCII_TMP) {
+  const probe = join(ASCII_TMP, `.dsh-audio-test-probe-${process.pid}`)
+  try {
+    writeFileSync(probe, '')
+    rmSync(probe, { force: true })
+    WRITABLE_ASCII_TMP = ASCII_TMP
+  } catch {
+    WRITABLE_ASCII_TMP = null
+  }
+}
+
+test('createWorkDir honours the configured tempDir', { skip: WRITABLE_ASCII_TMP ? false : 'no writable ASCII temp dir here' }, async () => {
+  const { createWorkDir } = await import('../lib/transcribe/whisper-cli.js')
+  const base = mkdtempSync(join(WRITABLE_ASCII_TMP, 'dsh-audio-pref-'))
+  try {
+    const dir = createWorkDir(base)
+    assert.equal(dirname(dir), base, 'work dir should be created inside config.tempDir')
+    rmSync(dir, { recursive: true, force: true })
+  } finally {
+    rmSync(base, { recursive: true, force: true })
+  }
+})
+
+test('createWorkDir rejects a non-ASCII tempDir instead of handing it to whisper', async () => {
+  const { createWorkDir } = await import('../lib/transcribe/whisper-cli.js')
+  assert.throws(
+    () => createWorkDir('C:/Users/31614/桌面/tmp'),
+    /non-ASCII|ASCII/,
+  )
 })
 
 test('buildWhisperArgs pins the CLI contract', async () => {

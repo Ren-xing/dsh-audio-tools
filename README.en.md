@@ -132,6 +132,7 @@ Put overrides in the profile's **`cordis.patch.yml`**, addressed by id:
 | `apiKey` | `''` | Sent as `Authorization: Bearer` |
 | `apiModel` | `whisper-1` | Model name for the API backend |
 | `outputDir` | `null` | Default output folder; unset means beside the input |
+| `tempDir` | `null` | Scratch folder for transcription. **Must be an ASCII path this process can write to** (whisper.cpp crashes on non-ASCII paths, 0xC0000409). Unset means it tries `%TEMP%`, `%LOCALAPPDATA%\Temp` and `%PUBLIC%\dsh-audio-tmp`, probing each with a real write first. Inside a sandbox whose workspace path contains non-ASCII characters, point it at an ASCII junction that resolves into the workspace |
 | `timeoutMs` | `600000` | Timeout per ffmpeg/whisper call |
 | `threads` | `0` | whisper threads, `0` = auto |
 
